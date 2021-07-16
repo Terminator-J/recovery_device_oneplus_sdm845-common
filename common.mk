@@ -23,7 +23,7 @@ PRODUCT_PRODUCT_PROPERTIES += ro.apex.updatable=false
 endif
 
 # Get non-open-source specific aspects
-$(call inherit-product, vendor/oneplus/sdm845-common/sdm845-common-vendor.mk)
+#$(call inherit-product, vendor/oneplus/sdm845-common/sdm845-common-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -97,11 +97,7 @@ PRODUCT_PACKAGES += \
 
 # Common init scripts
 PRODUCT_PACKAGES += \
-    init.device_extras.rc \
-    init.qcom.rc \
-    init.recovery.qcom.rc \
-    init.smartcharging.rc \
-    ueventd.qcom.rc
+    init.qcom.rc
 
 # DeviceExtras Package
 PRODUCT_PACKAGES += \
