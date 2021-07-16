@@ -44,7 +44,7 @@ TARGET_NO_BOOTLOADER := true
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 1
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
@@ -54,8 +54,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CONFIG := enchilada_defconfig
 TARGET_KERNEL_SOURCE := kernel/oneplus/sdm845
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := r416183d
-TARGET_KERNEL_ADDITIONAL_FLAGS := AS=llvm-as AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip
+TARGET_KERNEL_CLANG_VERSION := latest
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
@@ -118,7 +117,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 # Recovery
 BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_NO_RECOVERY := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
+#TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -131,8 +130,10 @@ BOARD_ROOT_EXTRA_FOLDERS := op1 op2 op_odm
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Sepolicy
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
-BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+#include device/qcom/sepolicy/SEPolicy.mk
+
+#BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
+#BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
     device/qcom/sepolicy/generic/private \
@@ -147,4 +148,4 @@ BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
 
 # Inherit from the proprietary version
--include vendor/oneplus/sdm845-common/BoardConfigVendor.mk
+#-include vendor/oneplus/sdm845-common/BoardConfigVendor.mk
