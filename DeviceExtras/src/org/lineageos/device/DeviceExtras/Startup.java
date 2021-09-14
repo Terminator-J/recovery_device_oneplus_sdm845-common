@@ -35,8 +35,6 @@ public class Startup extends BroadcastReceiver {
     public void onReceive(final Context context, final Intent bootintent) {
 
         DeviceExtras.restoreSliderStates(context);
-        org.lineageos.device.DeviceExtras.doze.DozeUtils.checkDozeService(context);
-        org.lineageos.device.DeviceExtras.kcal.KCalSettings.restore(context);
         VibratorCallStrengthPreference.restore(context);
         VibratorNotifStrengthPreference.restore(context);
         VibratorStrengthPreference.restore(context);
